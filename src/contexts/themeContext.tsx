@@ -6,8 +6,10 @@ import React, {
   useState,
 } from "react";
 
+import { Theme, ThemeVariant } from "../types/theme";
+
 interface ThemeContextType {
-  theme: "light" | "dark";
+  theme: Theme;
   toggleTheme: () => void;
 }
 
@@ -24,10 +26,10 @@ export const useTheme = () => {
 export const ThemeProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
+  const [theme, setTheme] = useState<Theme>(ThemeVariant.Light);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") as "light" | "dark";
+    const savedTheme = localStorage.getItem("theme") as Theme;
     if (savedTheme) {
       setTheme(savedTheme);
       document.documentElement.classList.toggle(
@@ -38,10 +40,14 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({
   }, []);
 
   const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
+    const newTheme =
+      theme === ThemeVariant.Light ? ThemeVariant.Dark : ThemeVariant.Light;
     setTheme(newTheme);
     localStorage.setItem("theme", newTheme);
-    document.documentElement.classList.toggle("dark-mode", newTheme === "dark");
+    document.documentElement.classList.toggle(
+      "dark-mode",
+      newTheme === ThemeVariant.Dark
+    );
   };
 
   return (
