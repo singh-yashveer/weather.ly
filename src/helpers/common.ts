@@ -10,3 +10,16 @@ export const isMobileDevice = () =>
   typeof window !== "undefined"
     ? /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
     : false;
+
+export const copyToClipboard = async (text: string): Promise<boolean> => {
+  try {
+    await navigator.clipboard.writeText(text);
+    // add toaster here
+
+    return true;
+  } catch (error) {
+    // add toaster here
+
+    return false;
+  }
+};
