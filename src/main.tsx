@@ -1,3 +1,5 @@
+import "../src/assets/tailwind.css";
+
 import { createRouter, RouterProvider } from "@tanstack/react-router";
 import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
