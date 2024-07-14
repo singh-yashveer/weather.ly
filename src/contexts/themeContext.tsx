@@ -7,6 +7,7 @@ import React, {
 } from "react";
 
 import { Theme, ThemeVariant } from "../types/theme";
+import StorageUtil from "../utils/storageUtils";
 
 interface ThemeContextType {
   theme: Theme;
@@ -29,7 +30,7 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({
   const [theme, setTheme] = useState<Theme>(ThemeVariant.Light);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") as Theme;
+    const savedTheme = StorageUtil.getItem("theme") as Theme;
     if (savedTheme) {
       setTheme(savedTheme);
       document.documentElement.classList.toggle(
@@ -43,7 +44,7 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({
     const newTheme =
       theme === ThemeVariant.Light ? ThemeVariant.Dark : ThemeVariant.Light;
     setTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
+    StorageUtil.setItem("theme", newTheme);
     document.documentElement.classList.toggle(
       "dark-mode",
       newTheme === ThemeVariant.Dark
