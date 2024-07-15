@@ -33,10 +33,7 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({
     const savedTheme = StorageUtil.getItem("theme") as Theme;
     if (savedTheme) {
       setTheme(savedTheme);
-      document.documentElement.classList.toggle(
-        "dark-mode",
-        savedTheme === "dark"
-      );
+      document.documentElement.classList.toggle("dark", savedTheme === "dark");
     }
   }, []);
 
@@ -46,7 +43,7 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({
     setTheme(newTheme);
     StorageUtil.setItem("theme", newTheme);
     document.documentElement.classList.toggle(
-      "dark-mode",
+      "dark",
       newTheme === ThemeVariant.Dark
     );
   };
