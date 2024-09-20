@@ -6,8 +6,8 @@ import React, {
   useState,
 } from "react";
 
-import { Theme, ThemeVariant } from "../types/theme";
-import StorageUtil from "../utils/storageUtils";
+import StorageUtil from "../../shared/utils/storageUtils";
+import { Theme, ThemeVariant } from "./theme";
 
 interface ThemeContextType {
   theme: Theme;

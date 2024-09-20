@@ -1,9 +1,9 @@
 import React, { PropsWithChildren } from "react";
 
-import { Text } from "../../uikit";
-import Color, { ColorName } from "../../uikit/Color";
-import { TextPropTypes } from "../../uikit/Text/types";
-import { Font, fonts } from "../../uikit/Text/typography";
+import { Text } from "../../shared/uikit";
+import Color, { ColorName } from "../../shared/uikit/Color";
+import { TextPropTypes } from "../../shared/uikit/Text/types";
+import { Font, fonts } from "../../shared/uikit/Text/typography";
 
 type GuruTextProps = PropsWithChildren<
   {
