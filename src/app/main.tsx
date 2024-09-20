@@ -1,12 +1,12 @@
-import "../src/assets/tailwind.css";
+import "./styles/tailwind.css";
 
 import { createRouter, RouterProvider } from "@tanstack/react-router";
 import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 
-import { ThemeProvider } from "./contexts/themeContext";
-import GlobalStyles from "./global/globalStyles";
-import { routeTree } from "./routeTree.gen";
+import { routeTree } from "./routes/routeTree.gen";
+import GlobalStyles from "./styles/globalStyles";
+import { ThemeProvider } from "./theme/themeContext";
 
 const router = createRouter({ routeTree });
 

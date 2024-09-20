@@ -1,6 +1,6 @@
 import { createLazyFileRoute } from "@tanstack/react-router";
 
-import ThemeToggle from "../global/themeToggle";
+import ThemeToggle from "../app/theme/themeToggle";
 
 export const Route = createLazyFileRoute("/")({
   component: Index,
