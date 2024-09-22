@@ -23,7 +23,8 @@ html, body{
     width: 100%;
     scroll-behavior: smooth;
     scroll-snap-type: y mandatory; 
-    overflow: hidden
+    overflow: hidden;
+    transition: background-color 0.3s ease-in-out;
 }
 
 a {

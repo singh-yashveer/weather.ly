@@ -1,7 +1,10 @@
 import { createLazyFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useQuery } from "react-query";
 
-import SearchInput from "../shared/components/searchInput/ui";
+import { SearchInput } from "../shared/components/searchInput";
+import { WeatherCard } from "../shared/components/WeatherCard/ui";
+import { fetchWeatherInfo } from "../shared/services";
 
 export const Route = createLazyFileRoute("/")({
   component: Index,
@@ -9,53 +12,51 @@ export const Route = createLazyFileRoute("/")({
 
 function Index() {
   const [searchValue, setSearchValue] = useState("New Delhi");
-  const [tempInfo, setTempInfo] = useState({});
 
-  const getWeatherInfo = async () => {
-    try {
-      const url = `https://api.openweathermap.org/data/2.5/weather?q=${searchValue}&units=metric&appid=a560b244567b8df79618c3fa33b6a022`;
-      //your api
+  const {
+    data: tempInfo,
+    isLoading,
+    error,
+    refetch,
+  } = useQuery(["weather", searchValue], () => fetchWeatherInfo(searchValue), {
+    enabled: false,
+    refetchInterval: 60000,
+  });
 
-      const res = await fetch(url);
-      const data = await res.json();
-
-      const { temp, humidity, pressure } = data.main;
-      const { main: weathermood } = data.weather[0];
-      const { name } = data;
-      const { speed } = data.wind;
-      const { country, sunset } = data.sys;
-
-      const myNewWeatherInfo = {
-        temp,
-        humidity,
-        pressure, //storing the data in the form of object
-        weathermood,
-        name,
-        speed,
-        country,
-        sunset,
-      };
-
-      setTempInfo(myNewWeatherInfo);
-    } catch (error) {
-      console.log(error);
-    }
+  const handleSelectCity = (city: string) => {
+    setSearchValue(city);
+    refetch();
   };
 
-  console.log(tempInfo, "tempInfo");
-
-  //useEffect hook is used for displaying the weather info of the city which is written in the search box by default
-  useEffect(() => {
-    // getWeatherInfo();
-  }, []);
-
   return (
-    <div>
+    <div className="flex flex-col justify-center items-center">
       <div>
-        <SearchInput />
-        <h1>React App with Tailwind CSS</h1>
+        <SearchInput
+          onSearch={setSearchValue}
+          onSelectCity={handleSelectCity}
+        />
       </div>
-      <h3>Welcome Home!</h3>
+
+      {isLoading && <p>Loading weather data...</p>}
+
+      {error instanceof Error && (
+        <p>Error fetching weather data: {error.message}</p>
+      )}
+      <WeatherCard {...tempInfo} />
+
+      {/* {tempInfo && (
+        <div>
+          <p>Temperature: {tempInfo.temp}°C</p>
+          <p>Weather: {tempInfo.weathermood}</p>
+          <p>City: {tempInfo.name}</p>
+          <p>Country: {tempInfo.country}</p>
+          <p>Humidity: {tempInfo.humidity}%</p>
+          <p>Wind Speed: {tempInfo.speed} km/h</p>
+          <p>Pressure: {tempInfo.pressure} hPa</p>
+        </div>
+      )} */}
     </div>
   );
 }
+
+export default Index;
