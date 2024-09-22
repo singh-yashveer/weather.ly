@@ -23,6 +23,7 @@ html, body{
     width: 100%;
     scroll-behavior: smooth;
     scroll-snap-type: y mandatory; 
+    overflow: hidden
 }
 
 a {
