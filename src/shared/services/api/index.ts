@@ -7,20 +7,20 @@ export const fetchWeatherInfo = async (
   const res = await fetch(url);
   const data = await res.json();
 
-  const { temp, humidity, pressure } = data.main;
+  const { temp, humidity } = data.main;
   const { main: weathermood } = data.weather[0];
   const { name } = data;
   const { speed } = data.wind;
-  const { country, sunset } = data.sys;
+  const { country, sunset, sunrise } = data.sys;
 
   return {
     temp,
     humidity,
-    pressure,
     weathermood,
     name,
     speed,
     country,
     sunset,
+    sunrise,
   };
 };
