@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useQuery } from "react-query";
 
 import { SearchInput } from "../shared/components/searchInput";
-import { WeatherCard } from "../shared/components/WeatherCard/ui";
+import { WeatherCard } from "../shared/components/weatherCard/ui";
 import { fetchWeatherInfo } from "../shared/services";
 
 export const Route = createLazyFileRoute("/")({
@@ -19,7 +19,6 @@ function Index() {
     error,
     refetch,
   } = useQuery(["weather", searchValue], () => fetchWeatherInfo(searchValue), {
-    enabled: false,
     refetchInterval: 60000,
   });
 
@@ -30,7 +29,7 @@ function Index() {
 
   return (
     <div className="flex flex-col justify-center items-center">
-      <div>
+      <div className="mb-8">
         <SearchInput
           onSearch={setSearchValue}
           onSelectCity={handleSelectCity}
@@ -43,18 +42,6 @@ function Index() {
         <p>Error fetching weather data: {error.message}</p>
       )}
       <WeatherCard {...tempInfo} />
-
-      {/* {tempInfo && (
-        <div>
-          <p>Temperature: {tempInfo.temp}°C</p>
-          <p>Weather: {tempInfo.weathermood}</p>
-          <p>City: {tempInfo.name}</p>
-          <p>Country: {tempInfo.country}</p>
-          <p>Humidity: {tempInfo.humidity}%</p>
-          <p>Wind Speed: {tempInfo.speed} km/h</p>
-          <p>Pressure: {tempInfo.pressure} hPa</p>
-        </div>
-      )} */}
     </div>
   );
 }
