@@ -1,10 +1,3 @@
-export function getHeaders() {
-  return {
-    "Content-type": "application/json; charset=UTF-8",
-    Authorization: `Bearer`,
-  };
-}
-
 export const debounce = (func: () => void, delay: number) => {
   const debounceTimeout = setTimeout(func, delay);
   return debounceTimeout;

@@ -7,4 +7,5 @@ export interface WeatherCardProps {
   speed?: number;
   country?: string;
   sunset?: number;
+  sunrise?: number;
 }
