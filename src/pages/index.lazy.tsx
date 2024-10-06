@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useQuery } from "react-query";
 
 import { SearchInput } from "../shared/components/searchInput";
-import { WeatherCard } from "../shared/components/WeatherCard/ui";
+import { WeatherCard } from "../shared/components/weatherCard/ui";
 import { fetchWeatherInfo } from "../shared/services";
 
 export const Route = createLazyFileRoute("/")({
