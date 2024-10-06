@@ -52,14 +52,14 @@ export const WeatherCard = ({
 
   return (
     <>
-      <article className="flex-col flex-wrap rounded-3xl shadow-2xl h-auto  max-h-[700px] w-[1/2] dark:border dark:border-accent">
+      <article className="flex-col flex-wrap rounded-3xl shadow-2xl dark:shadow-gray-700 h-auto  max-h-[700px] w-[1/2] dark:border dark:border-accent">
         <div className="flex-1 h-1/3 flex items-center justify-center text-[84px]">
-          <i className={`wi ${weatherState}`}></i>
+          <i className={`wi ${weatherState} mb-4`}></i>
         </div>
 
         <div className="flex-col md:flex-row">
-          <div className="flex-[0 0 40%] h-2/5 bg-dark flex items-center text-white">
-            <div className="w-full flex justify-around mr-5 text-[65px]">
+          <div className="flex-[0 0 40%] h-2/5 bg-dark flex items-center text-white dark:border-y">
+            <div className="w-full flex justify-around mr-5 text-[65px] border-r">
               <span>{temp}&deg;</span>
             </div>
             <div className="flex-[0 0 60%] flex flex-col w-full h-full justify-center">
