@@ -5,6 +5,7 @@ export const Footer = () => {
       <a className="underline" href="https://github.com/singh-yashveer">
         Yashveer
       </a>
+      ⚡
     </footer>
   );
 };
