@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/weatherly.svg" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=no"
+    />
+    <meta name="author" content="Yashveer Singh" />
+    <meta name="language" content="English" />
+    <meta
+      name="description"
+      content="Weatherly - Your go-to app for real-time weather updates and forecasts. Stay updated with accurate weather data."
+    />
+    <meta property="og:title" content="Weatherly - Real-Time Weather Updates" />
+    <meta
+      property="og:description"
+      content="Stay updated with accurate real-time weather data and forecasts for any location."
+    />
+    <meta property="og:type" content="website" />
+
+    <title>Weatherly</title>
+    <script>
+      function toggleTheme() {
+        if (localStorage.theme === "dark") {
+          localStorage.theme = "light";
+          document.querySelector("html").classList.remove("dark");
+        } else {
+          localStorage.theme = "dark";
+          document.querySelector("html").classList.add("dark");
+        }
+      }
+
+      // Initialize theme on page load
+      if (localStorage.theme === "dark" || !("theme" in localStorage)) {
+        document.querySelector("html").classList.add("dark");
+      } else {
+        document.querySelector("html").classList.remove("dark");
+      }
+    </script>
+    <script type="module" crossorigin src="/assets/index-BggG763z.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-sbxN1HaF.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
