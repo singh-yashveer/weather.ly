@@ -1,10 +1,66 @@
 export interface WeatherInfo {
   temp: number;
   humidity: number;
+  pressure?: number;
   weathermood: string;
+  description?: string;
   name: string;
   speed: number;
   country: string;
   sunset: number;
   sunrise: number;
+  feels_like?: number;
+  visibility?: number;
+  clouds?: number;
+  uv_index?: number;
+}
+
+export interface WeatherApiError {
+  cod: string;
+  message: string;
+}
+
+export interface WeatherApiResponse {
+  coord: {
+    lon: number;
+    lat: number;
+  };
+  weather: Array<{
+    id: number;
+    main: string;
+    description: string;
+    icon: string;
+  }>;
+  base: string;
+  main: {
+    temp: number;
+    feels_like: number;
+    temp_min: number;
+    temp_max: number;
+    pressure: number;
+    humidity: number;
+    sea_level?: number;
+    grnd_level?: number;
+  };
+  visibility: number;
+  wind: {
+    speed: number;
+    deg: number;
+    gust?: number;
+  };
+  clouds: {
+    all: number;
+  };
+  dt: number;
+  sys: {
+    type?: number;
+    id?: number;
+    country: string;
+    sunrise: number;
+    sunset: number;
+  };
+  timezone: number;
+  id: number;
+  name: string;
+  cod: number;
 }

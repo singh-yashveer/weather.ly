@@ -1,7 +1,8 @@
-import { ReactNode } from "@tanstack/react-router";
+import { ReactNode } from "react";
 
 export interface DetailCardProps {
   detail: string | number | undefined;
-  label: string | undefined;
+  label: string;
   icon: ReactNode;
+  className?: string;
 }
